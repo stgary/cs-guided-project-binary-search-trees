@@ -11,12 +11,14 @@ Example:
 Given the following binary tree
 
     5
-   / \ 
+   / \
   12  32
-     /  \  
+     /  \
     8    4
+   /
+  11 
 
-your function should return the depth = 3.
+your function should return the depth = 4.
 """
 class BinaryTreeNode:
     def __init__(self, value=0, left=None, right=None):
@@ -24,6 +26,15 @@ class BinaryTreeNode:
         self.left = left
         self.right = right
 
-def maxDepth(self, root):
+def maxDepth(root):
     # Your code here
+    # base case(s) 
+    # if we have an empty tree, return 0 
+    if root is None:
+        return 0 
+    # how do we get closer to a base case? 
+    # we recurse to the left and right 
+    left_height = maxDepth(root.left) + 1
+    right_height = maxDepth(root.right) + 1 
 
+    return max(left_height, right_height)
